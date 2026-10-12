@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Happy 18th Birthday sayangkuuu selyy eppa puspitaa! 🎂✨ | Special Surprise from arhaan</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Website surprise ulang tahun ke-18 spesial untuk Selyy Eppa Puspitaa tercinta (bebuy sayang) dari arhaan. Mengenang 2 tahun perjalanan indah bersama." />
+  <meta name="theme-color" content="#fff0f5" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  
+  <!-- Favicon Emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Floating Background Ambient Blobs -->
+  <div class="floating-bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Background Particle Canvas (Hearts & Sparkles) -->
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <!-- Confetti Cannon Canvas -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- ==========================================================
+       AUTHENTICATION GATE / LOGIN OVERLAY
+       ========================================================== -->
+  <div id="loginOverlay" class="login-overlay">
+    <div class="login-card">
+      <div class="mascot-box">
+        <span id="mascotAvatar" class="mascot-avatar">🐱</span>
+      </div>
+      <h1 class="login-title">Hai Cantik! 💌</h1>
+      <p class="login-subtitle">Masukkan kode rahasia cinta kita untuk membuka surprise spesial ulang tahun ke-18 kamu ✨</p>
+
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="usernameInput" class="form-label">Username</label>
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+            <input type="text" id="usernameInput" class="cute-input" placeholder="Masukkan username..." autocomplete="off" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="passwordInput" class="form-label">Password / Kode Rahasia</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="passwordInput" class="cute-input" placeholder="Kode rahasia kita..." autocomplete="off" required />
+            <button type="button" id="togglePwBtn" class="btn-toggle-pw" title="Lihat password">👁️</button>
+          </div>
+        </div>
+
+        <button type="button" id="hintToggleBtn" class="hint-badge-btn">💡 Butuh petunjuk?</button>
+        <div id="hintBox" class="hint-box">
+          ✨ <b>Petunjuk:</b> Username: nama panggilan kesayangan di Ig (lyyhan) & Password: tanggal jadian kita (DDMMYYYY) 🤍
+        </div>
+
+        <button type="submit" class="btn-login-submit">
+          <span>Buka Hadiah Spesial</span>
+          <span style="font-size: 1.2rem;">✨</span>
+        </button>
+
+        <div id="loginFeedback" class="login-feedback"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MAIN SURPRISE APP CONTAINER
+       ========================================================== -->
+  <div class="app-container">
+
+    <!-- Top Quick Bar -->
+    <header class="top-bar">
+      <div class="brand-badge">
+        <span class="sparkle-icon">💖</span>
+        <span>Selyy Eppa Puspitaa • 18th Chapter</span>
+      </div>
+      <div class="top-actions">
+        <button id="btnToggleMute" class="btn-icon-bubble active-pulse" title="Musik Romantis Ambient">🎵</button>
+        <button id="btnTopConfetti" class="btn-icon-bubble" title="Ledakkan Confetti!">🎉</button>
+        <button id="btnLockScreen" class="btn-icon-bubble" title="Kunci Kembali">🔒</button>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         PAGE 1: HOME & CELEBRATION (TIUP LILIN 18)
+         ======================================================== -->
+    <section id="tab-home" class="view-section active">
+      <div class="hero-banner">
+        <div id="bdayCountdownBadge" class="birthday-pill-tag">
+          🎂 Happy 18th Birthday, Bebuy Cantik Selyy Eppa Puspitaa! ✨
+        </div>
+        <h1 class="hero-title">
+          Selamat Ulang Tahun<br />
+          Ke-18 <span class="highlight-name">Selyy Eppa Puspitaa!</span> 💖
+        </h1>
+        <p class="hero-subtitle">
+          Hari ini 13 Oktober, 18 tahun yang lalu, lahir bidadari paling manis dan berarti buat aku: sayangg Selyy Eppa Puspitaa. Terimakasih bebuy sudah mau nemenin aku selama 2 tahun ini 🌸
+        </p>
+      </div>
+
+      <!-- 2 Years & Milestone Cards -->
+      <div class="milestone-grid">
+        <div class="milestone-card">
+          <div class="milestone-num">18</div>
+          <div class="milestone-label">Tahun Usia Indahmu 🎂</div>
+          <div style="font-size: 0.72rem; color: var(--primary); margin-top: 2px;">13 Okt 2008 - 2026</div>
+        </div>
+        <div class="milestone-card">
+          <div id="anniversaryDaysCount" class="milestone-num">730+ Hari</div>
+          <div class="milestone-label">Menemani Bersama 🤍</div>
+          <div style="font-size: 0.72rem; color: var(--secondary); margin-top: 2px;">Sejak 25 Mei 2024</div>
+        </div>
+      </div>
+
+      <!-- Interactive Birthday Cake Card -->
+      <div class="cake-card">
+        <div class="cake-visual-wrap" title="Klik kue untuk meniup lilin!">
+          <img src="assets/cake.jpg" alt="Kue Ulang Tahun Ke-18 Selyy Eppa Puspitaa" class="cake-img" />
+          
+          <!-- Flickering Candle Flame Graphics -->
+          <div class="candle-glow-cluster">
+            <div class="candle-flame"></div>
+            <div class="candle-flame" style="animation-delay: 0.3s;"></div>
+          </div>
+        </div>
+
+        <p class="cake-instructions">Tutup mata, buat satu permohonan yang paling bebuy inginkan di umur 18, lalu tiup lilinnya yaa sayangg! 🎂✨</p>
+
+        <button id="btnBlowCandle" class="btn-blow-candle">
+          Tiup Lilin 18 & Make a Wish! 🕯️💨
+        </button>
+
+        <div id="wishUnlockedCard" class="wish-unlocked-card">
+          <h3 class="wish-unlocked-title">Permohonan Terkabul! 🎉✨</h3>
+          <p class="wish-unlocked-text">
+            "Semoga di usia ke-18 ini semua impian, kebahagiaan, kesehatan, dan senyum manis bebuy Selyy selalu mekar setiap hari. Terimakasih sudah jadi sayangg terbaikku, dan semoga kita terus bersama saling melengkapi sampai selamanya!" 💖
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Action Cards to Other Sections -->
+      <div class="quick-links-grid">
+        <button class="quick-card-btn" data-target="tab-letter">
+          <span class="quick-card-icon">💌</span>
+          <span class="quick-card-title">Surat Spesial</span>
+        </button>
+        <button class="quick-card-btn" data-target="tab-gallery">
+          <span class="quick-card-icon">📸</span>
+          <span class="quick-card-title">Foto Kenangan</span>
+        </button>
+        <button class="quick-card-btn" data-target="tab-music">
+          <span class="quick-card-icon">🎵</span>
+          <span class="quick-card-title">Musik Favorit</span>
+        </button>
+        <button class="quick-card-btn" data-target="tab-reasons">
+          <span class="quick-card-icon">🎁</span>
+          <span class="quick-card-title">18 Alasan Cinta</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PAGE 2: SURAT CINTA / SPECIAL LETTER
+         ======================================================== -->
+    <section id="tab-letter" class="view-section">
+      <div class="letter-section-wrap">
+        <!-- Interactive Envelope -->
+        <div id="envelopeContainer" class="envelope-container" title="Klik untuk membuka surat cinta!">
+          <div class="vintage-envelope">
+            <div class="wax-seal">18</div>
+            <div class="envelope-text-prompt">Surat Cinta Spesial Buat Selyy Eppa Puspitaa 💌</div>
+            <div class="envelope-sub-prompt">Klik untuk membuka segel dan membaca pesan tulus dari hati Arhaan buat bebuy ✨</div>
+          </div>
+        </div>
+
+        <!-- Open Parchment Letter -->
+        <div id="parchmentLetter" class="parchment-letter">
+          <div class="letter-header">
+            <div class="letter-salutation">Untuk Sayangku, Selyy Eppa Puspitaa Tersayang 💖</div>
+            <div class="letter-date-stamp">13 Oktober 2026</div>
+          </div>
+
+          <div class="letter-body">
+Hai sayangg, bebuyy tercantik Selyy Eppa Puspitaa... Selamat ulang tahun yang ke-18 ya cantik! 🎉🎂
+
+Ga kerasa waktu berjalan begitu cepat, dan hari ini bebuy resmi menginjak usia 18 tahun. Rasanya baru kemarin kita mulai saling kenal dan dekat, tapi ternyata kita udah jalanin cerita cinta ini selama 2 tahun penuh kenangan manis dan hangat.
+
+Terimakasih banyak ya sayangg, sudah mau nemenin aku selama 2 tahun ini. Terimakasih untuk setiap senyuman manis kamu, setiap tawa renyah yang selalu bikin hari-hariku cerah, obrolan seru dari hal penting sampai hal receh yang selalu bikin kangen, kesabaran kamu, dan kehadiran bebuy yang selalu jadi alasan terbaik aku buat bersyukur setiap hari.
+
+Di umur yang ke-18 ini, doa aku buat Selyy sederhana tapi tulus dari lubuk hati paling dalam:
+Semoga Selyy Eppa Puspitaa selalu diberikan kesehatan yang prima, umur yang berkah, kebahagiaan yang melimpah tiada henti, kemudahan dalam meraih semua cita-cita dan mimpi besarmu, serta selalu dikelilingi oleh kasih sayang yang tulus.
+
+Semoga dengan web kecil yang aku buat spesial dengan segenap rasa cintaku ini, bebuy bisa selalu mengingat betapa berharganya setiap detik perjalanan kita selama 2 tahun ini. Kapanpun sayangg merasa capek atau butuh sandaran, selalu ingat kalau kamu punya Arhaan yang akan selalu ada, setia menemani, dan bangga banget sama kamu.
+
+Happy 18th Birthday, my lovely Bebuy Selyy! I love you so much, today, tomorrow, and forever. 🤍
+          </div>
+
+          <div class="letter-signature">
+            Dengan segenap cinta,<br />
+            — Arhaan 🤍
+          </div>
+
+          <!-- Love Meter -->
+          <div class="love-meter-card">
+            <div class="love-meter-title">Love Meter Buat Bebuy Selyy: <span id="lovePercentageText" style="color: var(--primary);">100%</span></div>
+            <div class="love-progress-bar-wrap">
+              <div id="loveProgressBar" class="love-progress-bar"></div>
+            </div>
+            <button id="btnSendLove" class="btn-send-love">
+              <span>Kirim Peluk & Tambah Cinta</span>
+              <span>💖</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PAGE 3: GALERI KENANGAN / MEMORY LANE
+         ======================================================== -->
+    <section id="tab-gallery" class="view-section">
+      <div class="gallery-intro">
+        <h2 style="font-family: var(--font-cute); font-size: 1.6rem; color: var(--primary); margin-bottom: 4px;">
+          Galeri 2 Tahun Bersama 📸
+        </h2>
+        <p style="font-size: 0.86rem; color: var(--text-muted);">
+          Kumpulan momen manis, tawa, dan cerita yang kita ukir sejak 25 Mei 2024. Klik polaroid untuk melihat cerita di baliknya! 🌸
+        </p>
+      </div>
+
+      <!-- Upload Custom Photo Button -->
+      <div class="upload-memory-wrap">
+        <input type="file" id="photoUploadInput" accept="image/*" style="display: none;" />
+        <button id="btnTriggerUpload" class="btn-upload-photo">
+          <span>📸 Tambah Foto Kenangan Baru</span>
+        </button>
+        <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 6px;">
+          Selyy atau Arhaan bisa langsung upload foto kenangan favorit kalian dari HP! ✨
+        </p>
+      </div>
+
+      <!-- Polaroid Cards Grid (Semua Foto Asli Kenangan) -->
+      <div id="galleryGrid" class="gallery-grid">
+        <div class="polaroid-card" data-memory-id="1">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/pertemuan pertama 25 may 2024.jpg" alt="Pertemuan Pertama 25 Mei 2024" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Pertemuan Pertama Kita 🤍</div>
+          <div class="polaroid-date-tag">25 Mei 2024 • Awal Cerita Kita</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="2">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/date pertama.jpg" alt="Date Pertama Kita" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">First Date Romantis 🌸</div>
+          <div class="polaroid-date-tag">Kencan Pertama Kita</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="3">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.46.43.jpeg" alt="Senyum Manis Bebuy Selyy" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Senyum Manis Bebuy Selyy ✨</div>
+          <div class="polaroid-date-tag">Momen aku dulu snbp</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="4">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.47.00.jpeg" alt="Momen Hangat Berdua" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Pertemuan Anniv yang pertama 1 tahunn</div>
+          <div class="polaroid-date-tag">Quality Time</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="5">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.47.19.jpeg" alt="Kencan & Foto Gemes" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Kencan di Ancol</div>
+          <div class="polaroid-date-tag">Fav Place</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="6">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.47.44.jpeg" alt="Dunia Milik Kita Berdua" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Konser Pertama W Perunggu</div>
+          <div class="polaroid-date-tag">Sebelum aku Lomba</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="7">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.48.57.jpeg" alt="Mata Indah Kesayangan" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">First Time Liat Teaterr kamuuu</div>
+          <div class="polaroid-date-tag">Momen gabisa dilupakann</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="8">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.50.10.jpeg" alt="Cerita & Petualangan Kita" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Menangg LOmbaa</div>
+          <div class="polaroid-date-tag">ngerayain di kopkenn</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="9">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.50.23.jpeg" alt="Bidadari Paling Cantik" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">selamat flsn nyaa</div>
+          <div class="polaroid-date-tag">Favorit Arhaan Selalu</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="10">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.51.14.jpeg" alt="Peluk & Kehangatan Cinta" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Anjir Menang FTP Lanjut ke Tempat Impian</div>
+          <div class="polaroid-date-tag">Waaa kerenn banget makin keren</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="11">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.51.34.jpeg" alt="Tawa Lepas Bahagia" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Bahagiaa Selalu bahkan ampe TIM pun bahagia 🎉</div>
+          <div class="polaroid-date-tag">Keceriaan Sayangg</div>
+        </div>
+
+        <div class="polaroid-card" data-memory-id="12">
+          <div class="polaroid-img-wrap">
+            <img src="assets/Imagee/WhatsApp Image 2026-10-12 at 20.52.30.jpeg" alt="Menyambut Chapter ke-18" class="polaroid-img" />
+          </div>
+          <div class="polaroid-caption">Menyambut Chapter ke-18 dengan Tampil Di TIM 🎂</div>
+          <div class="polaroid-date-tag">13 Oktober • HBD Bebuy!</div>
+        </div>
+      </div>
+
+      <!-- 2 Years Relationship Timeline -->
+      <div class="timeline-card">
+        <h3 class="timeline-title">Timeline Perjalanan 2 Tahun Kita ✨</h3>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Awal Perjalanan</div>
+            <h4 class="timeline-heading">Pertama Kali Ngobrol & Dekat</h4>
+            <p class="timeline-desc">Awal mula percakapan manis yang ga disangka bakal membawa kita sejauh dan seindah ini.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">25 Mei 2024</div>
+            <h4 class="timeline-heading">Hari Spesial Jadian Kita 🤍</h4>
+            <p class="timeline-desc">Hari di mana kita resmi memulai komitmen bersama untuk saling menyayangi, menjaga, dan menemani.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Sepanjang 2 Tahun</div>
+            <h4 class="timeline-heading">Ratusan Cerita, Tawa, & Kencan</h4>
+            <p class="timeline-desc">Mulai dari kencan dadakan, nyobain makanan enak, teleponan sampai larut, hingga saling menyemangati.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">13 Oktober 2026</div>
+            <h4 class="timeline-heading">Hari Ini: Selyy Eppa Puspitaa Ulang Tahun Ke-18! 🎂</h4>
+            <p class="timeline-desc">Merayakan babak baru kedewasaan bebuy Selyy bersama Arhaan yang akan selalu setia di samping sayangg.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PAGE 4: MUSIK PLAYER (SELYY'S MUSIC SPACE)
+         ======================================================== -->
+    <section id="tab-music" class="view-section">
+      <div class="player-container">
+        <div class="player-header">
+          <h2 class="player-title">Selyy's Music Space 🎵</h2>
+          <p class="player-subtitle">Lagu-lagu yang selalu mengingatkan aku sama manisnya bebuy tercinta Selyy Eppa Puspitaa 🌸</p>
+        </div>
+
+        <!-- Spinning Vinyl Turntable -->
+        <div class="turntable-box">
+          <div id="vinylDisk" class="vinyl-disk">
+            <div class="vinyl-grooves"></div>
+            <div class="vinyl-center-art">
+              <img src="assets/Imagee/date pertama.jpg" alt="Selyy's Playlist Album Art" />
+            </div>
+            <div class="vinyl-spindle-hole"></div>
+          </div>
+        </div>
+
+        <!-- Equalizer Sound Wave Animation -->
+        <div id="equalizerWrap" class="equalizer-bar-wrap">
+          <div class="equalizer-bar"></div>
+          <div class="equalizer-bar"></div>
+          <div class="equalizer-bar"></div>
+          <div class="equalizer-bar"></div>
+          <div class="equalizer-bar"></div>
+          <div class="equalizer-bar"></div>
+          <div class="equalizer-bar"></div>
+        </div>
+
+        <!-- Current Track Info -->
+        <div id="currentTrackTitle" class="track-title">Until I Found You</div>
+        <div id="currentTrackArtist" class="track-artist">Stephen Sanchez</div>
+
+        <!-- Audio Scrubber / Progress -->
+        <div class="audio-progress-container">
+          <span id="currentTimeDisplay" class="time-stamp">0:00</span>
+          <div id="audioSliderWrap" class="audio-slider-wrap">
+            <div id="audioSliderFill" class="audio-slider-fill"></div>
+          </div>
+          <span id="totalTimeDisplay" class="time-stamp">3:00</span>
+        </div>
+
+        <!-- Player Controls -->
+        <div class="player-controls">
+          <button id="btnPrevTrack" class="btn-ctrl" title="Lagu Sebelumnya">⏮️</button>
+          <button id="btnPlayPause" class="btn-ctrl-play" title="Play / Pause">
+            <span id="playPauseIcon">▶️</span>
+          </button>
+          <button id="btnNextTrack" class="btn-ctrl" title="Lagu Selanjutnya">⏭️</button>
+        </div>
+
+        <!-- Live Synchronized Lyrics Card -->
+        <div class="lyrics-card">
+          <div class="lyrics-tag">Lirik Romantis Terpilih 🤍</div>
+          <div id="currentLyricsLine" class="lyrics-current-line">"I would never fall in love until I found her..."</div>
+          <div id="nextLyricsLine" class="lyrics-next-line">"I said, 'I would never fall unless it's you I fall into'..."</div>
+        </div>
+      </div>
+
+      <!-- Playlist Selection -->
+      <div class="playlist-card">
+        <div class="playlist-header">
+          <h3 class="playlist-title">Daftar Lagu Kesukaan Kita 💿</h3>
+          <input type="file" id="musicUploadInput" accept="audio/*" style="display: none;" />
+          <button id="btnUploadMusic" class="btn-upload-music">➕ Upload MP3 Favorit</button>
+        </div>
+
+        <div class="playlist-items">
+          <div class="playlist-item active" data-index="0">
+            <div class="playlist-item-left">
+              <span class="playlist-item-num">01</span>
+              <div class="playlist-item-info">
+                <div class="playlist-song-name">Until I Found You</div>
+                <div class="playlist-song-sub">Stephen Sanchez • Our Romantic Anthem</div>
+              </div>
+            </div>
+            <span class="playlist-play-icon">▶</span>
+          </div>
+
+          <div class="playlist-item" data-index="1">
+            <div class="playlist-item-left">
+              <span class="playlist-item-num">02</span>
+              <div class="playlist-item-info">
+                <div class="playlist-song-name">Monokrom</div>
+                <div class="playlist-song-sub">TULUS • Lembar Lagu Ini Untukmu</div>
+              </div>
+            </div>
+            <span class="playlist-play-icon">▶</span>
+          </div>
+
+          <div class="playlist-item" data-index="2">
+            <div class="playlist-item-left">
+              <span class="playlist-item-num">03</span>
+              <div class="playlist-item-info">
+                <div class="playlist-song-name">Sempurna</div>
+                <div class="playlist-song-sub">Andra and The Backbone • Bebuy Selyy Paling Sempurna</div>
+              </div>
+            </div>
+            <span class="playlist-play-icon">▶</span>
+          </div>
+
+          <div class="playlist-item" data-index="3">
+            <div class="playlist-item-left">
+              <span class="playlist-item-num">04</span>
+              <div class="playlist-item-info">
+                <div class="playlist-song-name">About You</div>
+                <div class="playlist-song-sub">The 1975 • Thinking of You Every Day</div>
+              </div>
+            </div>
+            <span class="playlist-play-icon">▶</span>
+          </div>
+
+          <div class="playlist-item" data-index="4">
+            <div class="playlist-item-left">
+              <span class="playlist-item-num">05</span>
+              <div class="playlist-item-info">
+                <div class="playlist-song-name">Golden Hour</div>
+                <div class="playlist-song-sub">JVKE • Selyy's 18th Shining Glow</div>
+              </div>
+            </div>
+            <span class="playlist-play-icon">▶</span>
+          </div>
+
+          <div class="playlist-item" data-index="5">
+            <div class="playlist-item-left">
+              <span class="playlist-item-num">06</span>
+              <div class="playlist-item-info">
+                <div class="playlist-song-name">Film Favorit</div>
+                <div class="playlist-song-sub">Sheila On 7 • Seperti di Film Favorit Kita</div>
+              </div>
+            </div>
+            <span class="playlist-play-icon">▶</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PAGE 5: 18 HAL YANG BIKIN SAYANG (18 REASONS)
+         ======================================================== -->
+    <section id="tab-reasons" class="view-section">
+      <div class="reasons-intro">
+        <h2 style="font-family: var(--font-cute); font-size: 1.6rem; color: var(--primary); margin-bottom: 4px;">
+          18 Hal Tentang Kamu 💖
+        </h2>
+        <div class="reasons-counter-badge">
+          <span>Terbuka:</span>
+          <span id="openedReasonsCount">0 / 18</span>
+          <span>🎁</span>
+        </div>
+        <p style="font-size: 0.84rem; color: var(--text-muted);">
+          18 kartu rahasia untuk merayakan ulang tahun ke-18 Selyy Eppa Puspitaa. Klik setiap kartu untuk membuka alasan manis kenapa Arhaan sayanggg banget sama bebuy! ✨
+        </p>
+      </div>
+
+      <!-- 18 Interactive Flip Cards -->
+      <div id="reasonsGrid" class="reasons-grid"></div>
+    </section>
+
+    <!-- ========================================================
+         PAGE 6: WISH CAPSULE / KOTAK HARAPAN
+         ======================================================== -->
+    <section id="tab-wishes" class="view-section">
+      <div class="wish-card">
+        <h2 style="font-family: var(--font-cute); font-size: 1.5rem; color: var(--primary); text-align: center; margin-bottom: 6px;">
+          Pojok Doa & Harapan Ke-18 ✨
+        </h2>
+        <p style="font-size: 0.86rem; color: var(--text-muted); text-align: center; margin-bottom: 20px;">
+          Tulis harapan atau impian yang ingin bebuy Selyy wujudkan di umur 18 tahun ini. Semoga semesta mengaminkan semuanya ya sayangg! 🌸
+        </p>
+
+        <div class="wish-input-wrap">
+          <textarea id="wishInput" class="wish-textarea" placeholder="Tuliskan harapan indah bebuy di sini..."></textarea>
+          <button id="btnAddWish" class="btn-add-wish">
+            <span>Simpan Harapan di Kapsul Waktu</span>
+            <span>✨</span>
+          </button>
+        </div>
+
+        <h3 style="font-family: var(--font-cute); font-size: 1.05rem; color: var(--text-main); margin-bottom: 12px;">
+          Kumpulan Doa & Harapan 📜
+        </h3>
+        <div id="wishesList" class="wishes-list"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==========================================================
+       PHOTO LIGHTBOX MODAL
+       ========================================================== -->
+  <div id="lightboxModal" class="lightbox-modal">
+    <div class="lightbox-card">
+      <button id="btnCloseLightbox" class="btn-close-lightbox" title="Tutup">✕</button>
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="Kenangan Detail" class="lightbox-img" />
+      </div>
+      <div id="lightboxCaption" class="lightbox-caption">Judul Kenangan</div>
+      <div id="lightboxStory" class="lightbox-story">Cerita manis di balik foto ini...</div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       BOTTOM DOCK NAVIGATION
+       ========================================================== -->
+  <nav class="bottom-dock-nav" aria-label="Navigasi Halaman">
+    <button class="nav-tab-btn active" data-target="tab-home">
+      <span class="tab-icon">🎂</span>
+      <span>Home</span>
+    </button>
+    <button class="nav-tab-btn" data-target="tab-letter">
+      <span class="tab-icon">💌</span>
+      <span>Surat</span>
+    </button>
+    <button class="nav-tab-btn" data-target="tab-gallery">
+      <span class="tab-icon">📸</span>
+      <span>Kenangan</span>
+    </button>
+    <button class="nav-tab-btn" data-target="tab-music">
+      <span class="tab-icon">🎵</span>
+      <span>Musik</span>
+    </button>
+    <button class="nav-tab-btn" data-target="tab-reasons">
+      <span class="tab-icon">💖</span>
+      <span>18 Hal</span>
+    </button>
+    <button class="nav-tab-btn" data-target="tab-wishes">
+      <span class="tab-icon">✨</span>
+      <span>Harapan</span>
+    </button>
+  </nav>
+
+  <!-- Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
